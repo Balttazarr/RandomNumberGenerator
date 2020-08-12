@@ -30,9 +30,13 @@
             <Button Grid.Column="0" Content="Generate" Click="Button_Click"/>
             <TextBox Grid.Column="1" />
             <TextBox Grid.Column="2" />
-            <Slider Grid.Column="3" Minimum="2" Maximum="20" AutoToolTipPlacement="BottomRight"  AutoToolTipPrecision="0" />
+            <!--<Slider Grid.Column="3" Minimum="2" Maximum="20" AutoToolTipPlacement="BottomRight"  AutoToolTipPrecision="0" />-->
+            <DockPanel Grid.Column="3" VerticalAlignment="Center" Margin="10">
+                <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" BorderBrush="AntiqueWhite" />
+                <Slider Maximum="20" Minimum="2"   Name="slValue" />
+            </DockPanel>
 
-            
+
             <Label Grid.Column="1" Grid.Row="1"  Content="Min" Style="{StaticResource baseStyle}"/>
             <Label Grid.Column="2" Grid.Row="1"  Content="Max" Style="{StaticResource baseStyle}"/>
             <Label Grid.Column="3" Grid.Row="1"  Content="# of needed numbers" Style="{StaticResource baseStyle}"/>
