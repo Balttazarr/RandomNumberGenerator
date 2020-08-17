@@ -5,14 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RandomNumberGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="250" Width="450">
+        Title="MainWindow" Height="280" Width="450"
+        ResizeMode="NoResize">
     <Window.Resources>
         <Style TargetType="{x:Type Label}" x:Key="baseStyle">
             <Setter Property="FontSize" Value="9" />
         </Style>
     </Window.Resources>
-    <Grid>
-        <Grid Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
+    <Grid Margin="0,0,0,1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10" />
+            <RowDefinition />
+            <RowDefinition Height="10" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="10" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="1" Grid.Column="1" Margin="0,10,0,0" VerticalAlignment="Top" HorizontalAlignment="Center">
 
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="100"/>
@@ -28,20 +39,20 @@
 
             </Grid.RowDefinitions>
             <Button Grid.Column="0" Content="Generate" Click="Button_Click"/>
-            <TextBox Grid.Column="1" />
-            <TextBox Grid.Column="2" />
+            <TextBox Grid.Column="1" Name="txt_RMin" />
+            <TextBox Grid.Column="2" Name="txt_RMax" />
             <!--<Slider Grid.Column="3" Minimum="2" Maximum="20" AutoToolTipPlacement="BottomRight"  AutoToolTipPrecision="0" />-->
             <DockPanel Grid.Column="3" VerticalAlignment="Center" Margin="10">
-                <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Right" TextAlignment="Right" Width="40" BorderBrush="AntiqueWhite" />
-                <Slider Maximum="20" Minimum="2"   Name="slValue" />
+                <TextBox Text="{Binding ElementName=slValue, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Center"   DockPanel.Dock="Right" Width="40" BorderBrush="AntiqueWhite" />
+                <Slider Minimum="2" Maximum="20" IsSnapToTickEnabled="true" TickFrequency="1"   Name="slValue" />
             </DockPanel>
 
 
             <Label Grid.Column="1" Grid.Row="1"  Content="Min" Style="{StaticResource baseStyle}"/>
             <Label Grid.Column="2" Grid.Row="1"  Content="Max" Style="{StaticResource baseStyle}"/>
-            <Label Grid.Column="3" Grid.Row="1"  Content="# of needed numbers" Style="{StaticResource baseStyle}"/>
+            <Label Grid.Column="3" Grid.Row="1"  Content="# of gen. numbers" Style="{StaticResource baseStyle}"/>
 
-            <ListBox Grid.Row="2" Height="150" Grid.ColumnSpan="4" BorderBrush="Black">
+            <ListBox Grid.Row="2" Height="150" Grid.ColumnSpan="4" BorderBrush="Black" x:Name="listBox1">
 
             </ListBox>
         </Grid>
